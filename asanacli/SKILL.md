@@ -10,7 +10,7 @@ Command-line interface for Asana project management. Supports listing tasks, vie
 ## Installation
 
 `
-go install github.com/ttk/asana@bbb68ec3aaa319031f6dfe8ced9a2395ec226976
+go install github.com/ttk/asana@cc81915db517efb655f7462173f229aef27662ee
 `
 ## Setup
 
@@ -69,6 +69,7 @@ asana due 5 "next friday"
 ```
 
 **Set task section:**
+
 ```bash
 asana set-sec -p eng <task-id> <section-name>   # set section for engineering tasks
 # Examples:
@@ -92,6 +93,7 @@ asana browse <task-id>
 ```bash
 asana download <attachment-gid> # download by Global ID
 asana download <task-id> <attachment-index> # download specific attachment by index
+asana download --output <filepath> <attachment-gid> # download by Global ID, and specify a custom output file path
 ```
 
 **List workspaces:**
@@ -150,3 +152,4 @@ Configuration and cache files are stored in:
 - Task caching speeds up repeated operations; use `--refresh` to update or `--no-cache` to bypass
 - Custom fields are automatically displayed without additional configuration
 - Verbose mode (`-v`) shows complete task history including all comments and activity, but usually `--with-comments` is sufficient.
+- When downloading attachments, always specify a custom output filepath and make sure the filenames are unique to avoid name collissions. Retain the file extension, but feel free to give filename that provides context of what is in the attachment.
